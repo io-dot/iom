@@ -1,0 +1,39 @@
+---
+import "../../pcss/components/badge.pcss.css";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+
+import BaseHead from "../../components/astro/BaseHead.astro";
+import Header from "../../components/frontpage/Header.astro";
+import Footer from "../../components/frontpage/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <a class="" href="https://github.com/joSecret/jo-base-theme">
+        <span class="badge badge-primary">v1.0.beta</span>
+      </a>
+
+      <h1>{SITE_TITLE}.Docs</h1>
+    </main>
+    <Footer />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        & > main {
+          flex-grow: 1;
+        }
+      }
+    </style>
+  </body>
+</html>

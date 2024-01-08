@@ -1,0 +1,31 @@
+---
+import { SITE_TITLE } from "../../consts";
+import Layout from "../../layouts/BlogPost.astro";
+---
+
+<Layout
+  title={`About ${SITE_TITLE}`}
+  description="Lorem ipsum dolor sit amet"
+  pubDate={new Date("January 08 2024")}
+  heroImage="/about/blog-placeholder-about.jpg"
+>
+  <ul>
+    <li><b>Name:</b> {SITE_TITLE}</li>
+    <li><b>Live Web site:</b> <a href="#">Link</a></li>
+    <li><b>Git:</b> Github <a href="#">Link</a></li>
+    <li><b>Task manager:</b> Jira <a href="#">Link</a></li>
+    <li><b>Design Link:</b> Figma <a href="#">Link</a></li>
+  </ul>
+
+  <div class="h3">Folder structure</div>
+  <h5>components</h5>
+  astro -> Componentele pentru toate env.<br />
+  frontpage -> Componentele pentru<br />
+  Pagina initiala + blog + About (project). docs -> Componentele Documentatie.
+
+  <h5>content</h5>
+  blog -> (temporar) Este folosit pentru partea de "Front page" Unele date generale.
+
+  <h5>layout</h5>
+  blog -> (temporar) Este folosit pentru partea de "Front page" Unele date generale.
+</Layout>

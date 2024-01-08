@@ -1,0 +1,48 @@
+---
+import "../../pcss/components/badge.pcss.css";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+
+import BaseHead from "../../components/astro/BaseHead.astro";
+import Header from "../../components/frontpage/Header.astro";
+import Footer from "../../components/frontpage/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <a class="" href="https://github.com/joSecret/jo-base-theme">
+        <span class="badge badge-primary">v1.0.beta</span>
+      </a>
+
+      <h1>{SITE_TITLE}.Toolkit</h1>
+
+      <h5 class="text-center">
+        Powerful, extensible, and feature-packed frontend toolkit. Build and
+        customize with PostCSS, utilize prebuilt grid system and components, and
+        bring projects to life with minimum JavaScript code.
+      </h5>
+
+      Acest frontend toolkit este folosit pentru unificarea stilului in Drupal,
+      Astro si Nexjs(comming).
+    </main>
+    <Footer />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        & > main {
+          flex-grow: 1;
+        }
+      }
+    </style>
+  </body>
+</html>

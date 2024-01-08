@@ -1,0 +1,35 @@
+---
+import BaseHead from "../../components/astro/BaseHead.astro";
+import Header from "../../components/snippets/Header.astro";
+import Footer from "../../components/frontpage/Footer.astro";
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        & > main {
+          flex-grow: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

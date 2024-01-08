@@ -1,0 +1,155 @@
+---
+import Layout from "../../layouts/snippets/Snippets.astro";
+---
+
+<Layout>
+  <div class="block block-layout">
+    <h3 class="block--title">Map</h3>
+    <div class="block--description">
+      Explore a rich repository of insightful reports and publications
+    </div>
+
+    <div class="slider" data-slider>
+      <ul class="slider__track" data-slider-track>
+        <li>
+          <div class="slide">1</div>
+        </li>
+        <li>
+          <div class="slide">2</div>
+        </li>
+        <li>
+          <div class="slide">3</div>
+        </li>
+        <li>
+          <div class="slide">4</div>
+        </li>
+        <li>
+          <div class="slide">5</div>
+        </li>
+        <li>
+          <div class="slide">6</div>
+        </li>
+        <li>
+          <div class="slide">7</div>
+        </li>
+      </ul>
+
+      <div class="slider__buttons" data-buttons>
+        <button class="slider__button" data-slider-prev disabled>
+          Previous
+        </button>
+
+        <button class="slider__button" data-slider-next> Next</button>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .slider {
+    --slider-padding: 1rem;
+    --slider-column-gap: 1rem;
+    --slide-width: 48%;
+    --slide-snap-align: start;
+
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slider__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: var(--slider-padding);
+    scroll-behavior: smooth;
+
+    list-style-type: none;
+    padding: 0;
+    margin-right: calc(var(--slider-column-gap) * -1);
+
+    > * {
+      flex: 1 0 var(--slide-width);
+      scroll-snap-align: var(--slide-snap-align);
+      scroll-snap-stop: always;
+      padding-right: var(--slider-column-gap);
+    }
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .slider__buttons {
+    margin-top: 1rem;
+
+    [disabled] {
+      opacity: 0.5;
+    }
+  }
+
+  .slide {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--c-primary);
+    color: #a29bfe;
+  }
+</style>
+
+<script is:inline>
+  const slider = document.querySelector("[data-slider]");
+  const buttons = document.querySelector("[data-buttons]");
+
+  const track = slider.querySelector("[data-slider-track]");
+  const prev = slider.querySelector("[data-slider-prev]");
+  const next = slider.querySelector("[data-slider-next]");
+
+  window.addEventListener("load", onLoadFunction);
+  window.addEventListener("resize", onLoadFunction);
+
+  function onLoadFunction(e) {
+    if (track.scrollWidth <= track.clientWidth) {
+      buttons.classList.add("d-none");
+    } else {
+      buttons.classList.remove("d-none");
+    }
+  }
+
+  if (track) {
+    prev.addEventListener("click", () => {
+      next.removeAttribute("disabled");
+
+      track.scrollTo({
+        left: track.scrollLeft - track.firstElementChild.offsetWidth,
+        behavior: "smooth",
+      });
+    });
+
+    next.addEventListener("click", () => {
+      prev.removeAttribute("disabled");
+
+      track.scrollTo({
+        left: track.scrollLeft + track.firstElementChild.offsetWidth,
+        behavior: "smooth",
+      });
+    });
+
+    track.addEventListener("scroll", () => {
+      const trackScrollWidth = track.scrollWidth;
+      const trackOuterWidth = track.clientWidth;
+
+      prev.removeAttribute("disabled");
+      next.removeAttribute("disabled");
+
+      if (track.scrollLeft <= 0) {
+        prev.setAttribute("disabled", "");
+      }
+
+      if (track.scrollLeft === trackScrollWidth - trackOuterWidth) {
+        next.setAttribute("disabled", "");
+      }
+    });
+  }
+</script>
