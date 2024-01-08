@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://joSecret.github.io',
-  base: '/jo-base-theme',
+	site: 'https://io-dot.github.io',
+  base: '/iom',
 	integrations: [mdx(), sitemap()],
 });

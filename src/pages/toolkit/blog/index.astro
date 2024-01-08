@@ -95,11 +95,11 @@ const posts = (await getCollection("blog")).sort(
           {
             posts.map((post) => (
               <li>
-                <a href={`/jo-base-theme/toolkit/blog/${post.slug}/`}>
+                <a href={`/iom/toolkit/blog/${post.slug}/`}>
                   <img
                     width={720}
                     height={360}
-                    src={`/jo-base-theme${post.data.heroImage}`}
+                    src={`/iom${post.data.heroImage}`}
                     alt=""
                   />
                   <h4 class="title">{post.data.title}</h4>
