@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/snippets/Snippets.astro";
+
+import "../../pcss/components/accordion.pcss.css";
+---
+
+<Layout>
+  <div class="container-grid">
+    <div class="accordion">
+      <details open name="cookies">
+        <summary class="accordiontitle"
+          >The global victim of trafficking dataset</summary
+        >
+      </details>
+      <div class="accordion--body">
+        <div class="field overflow-hidden">
+          The CTDC global victim of trafficking dataset is the largest of its
+          kind in the world, and currently exists in two forms. The data are
+          based on case management data, gathered from identified cases of human
+          trafficking, disaggregated at the level of the individual. The cases
+          are recorded in a case management system during the provision of
+          protection and assistance services, or are logged when individuals
+          contact a counter-trafficking hotline. The number of observations in
+          the dataset increases as new records are added by the contributing
+          organizations. The global victim of trafficking dataset that is
+          available to download from the website in csv format has been
+          mathematically anonymized, and the complete, non k-anonymized version
+          of the dataset is displayed throughout the website through
+          visualizations and charts showing detailed analysis.
+        </div>
+      </div>
+
+      <details name="cookies">
+        <summary>The global synthetic dataset</summary>
+      </details>
+      <div class="accordion--body">
+        <div class="field overflow-hidden">
+          In September 2021, CTDC released its first downloadable Global
+          Synthetic Dataset, representing data from over 156,000 victims and
+          survivors of trafficking across 189 countries and territories (where
+          victims were first identified and supported by CTDC partners). The
+          privacy-preserving synthetic data solution, developed at Microsoft
+          Research in the Python programming language, is freely available via
+          GitHub. Please refer to the definitions page for more information on
+          synthetic data.
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

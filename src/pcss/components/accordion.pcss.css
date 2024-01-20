@@ -1,143 +1,88 @@
 /* Base styles */
+/* Global vars
+ * --a-btn-c => Summary in details in .accrordion colors (c)
+ * --a--btn--fs => Summary in details in .accrordion font size (fs)
+ * --a--btn--fw => Summary in details in .accrordion font weight (fw)
+ * --a-btn-px => Summary in details in .accrordion padding block (px)
+ * --a-body-pb => body in .accrordion padding bottom (pb)
+ */
 .accordion {
-  --a-color: var(--body-color);
-  --a-bg: var(--body-bg);
-  --a-transition: all 0.15s ease;
-  --a-border-color: var(--bc);
-  --a-border-width: var(--bw);
-  --a-border-radius: var(--br);
-  --a-inner-border-radius: calc(var(--a-border-radius) - var(--a-border-width));
-  --a-btn-padding-x: 1rem;
-  --a-btn-padding-y: 1.25rem;
-  --a-btn-color: var(--a-color);
-  --a-btn-bg: var(--a-bg);
-  --a-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--a-btn-color)'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
-  --a-btn-icon-width: 1.25rem;
-  --a-btn-icon-transform: rotate(-180deg);
-  --a-btn-icon-transition: transform 0.2s ease-in-out;
-  --a-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--a-active-color)'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
-  --a-btn-focus-border-color: rgba(var(--c-primary), 0.5);
-  --a-btn-focus-box-shadow: 0 0 0 0.25rem rgba(125, 125, 125, 0.5);
-  --a-body-padding-x: var(--a-btn-padding-x);
+  --a-c: var(--body-c);
+  --a-tt: 0.15s;
+
+  --_a--bc: var(--a--bc, var(--bc));
+  --_a--bw: var(--a--bw, var(--bw));
+  --_a--bs: var(--a--bs, var(--bs));
+  --_a-s: clamp(16px, 0.812rem + 0.765vw, 24px);
+
+  --a-icon: url("data:image/svg+xml,<svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.88 10.56L8 4.44L14.12 10.56L16 8.66666L8 0.666664L0 8.66666L1.88 10.56Z' fill='#3F4753'/></svg>");
+  --a-icon-s: clamp(24px, 1.312rem + 0.765vw, 32px);
+  --a-icon-t: transform 0.2s ease-in-out;
+  --a-icon-tr: 0deg;
+
+  --a-body-px: var(--a-btn-padding-x);
   --a-body-padding-y: var(--a-btn-padding-y);
+
   --a-active-color: var(--c-primary);
-  --a-active-bg: var(--a-color);
-}
+  --a-active-bg: var(--a-c);
 
-.accordion-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: var(--a-btn-padding-y) var(--a-btn-padding-x);
-  font-size: var(--font-size);
-  color: var(--a-btn-color);
-  text-align: left;
-  background-color: var(--a-btn-bg);
-  border: 0;
-  border-radius: 0;
-  overflow-anchor: none;
-  transition: var(--a-transition);
+  border-top: var(--_a--bc) var(--_a--bw) var(--_a--bs);
 
-  &:not(.collapsed) {
-    color: var(--a-active-color);
-    background-color: var(--a-active-bg);
-    box-shadow: inset 0 calc(-1 * var(--a-border-width)) 0 var(--a-border-color);
+  summary {
+    cursor: pointer;
+    display: flex;
+    list-style: none;
+    overflow-anchor: none;
+    color: var(--a-btn-c, var(--a-c));
+    font-size: var(--a--btn--fs, clamp(18px, 0.984rem + 0.574vw, 24px));
+    font-weight: var(--a--btn--fw, var(--fw-semibold));
+    padding-block: var(--a-btn-px, var(--_a-s));
 
     &::after {
-      background-image: var(--a-btn-active-icon);
-      transform: var(--a-btn-icon-transform);
+      content: "";
+      width: var(--a-icon-s);
+      height: var(--a-icon-s);
+      mask-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.88 11.44L16 17.56L22.12 11.44L24 13.3333L16 21.3333L8 13.3333L9.88 11.44Z' fill='%233F4753'/%3E%3C/svg%3E%0A");
+      mask-repeat: no-repeat;
+      mask-size: cover;
+      background-color: var(--a-c);
+      margin-left: auto;
+      transform: rotate(var(--a-icon-tr));
+      transition: var(--a-icon-t);
     }
-  }
 
-  &::after {
-    content: "";
-    flex-shrink: 0;
-    width: var(--a-btn-icon-width);
-    height: var(--a-btn-icon-width);
-    margin-left: auto;
-    background-image: var(--a-btn-icon);
-    background-repeat: no-repeat;
-    background-size: var(--a-btn-icon-width);
-    transition: var(--a-btn-icon-transition);
-  }
-
-  &:hover {
-    z-index: 2;
-  }
-
-  &:focus {
-    z-index: 3;
-    border-color: var(--a-btn-focus-border-color);
-    outline: 0;
-    box-shadow: var(--a-btn-focus-box-shadow);
-  }
-}
-
-.accordion-header {
-  margin-bottom: 0;
-}
-
-.accordion-item {
-  color: var(--a-color);
-  background-color: var(--a-bg);
-  border: var(--a-border-width) solid var(--a-border-color);
-
-  &:first-of-type {
-    border-top-left-radius: var(--a-border-radius);
-    border-top-right-radius: var(--a-border-radius);
-
-    &.accordion-button {
-      @mixin border-top-radius var(--a-inner-border-radius);
-    }
-  }
-
-  &:not(:first-of-type) {
-    border-top: 0;
-  }
-
-  &:last-of-type {
-    @mixin border-bottom-radius var(--a-border-radius);
-
-    .accordion-button {
-      &.collapsed {
-        @mixin border-bottom-radius var(--a-inner-border-radius);
+    /*
+      &:focus {
+        z-index: 3;
+        border-color: var(--a-btn-focus-border-color);
+        outline: 0;
+        box-shadow: var(--a-btn-focus-box-shadow);
       }
-    }
-
-    .accordion-collapse {
-      @mixin border-bottom-radius var(--a-border-radius);
-    }
-  }
-}
-
-.accordion-body {
-  padding: var(--a-body-padding-y) var(--a-body-padding-x);
-}
-
-/* Flush accordion items */
-.accordion-flush {
-  & .accordion-collapse {
-    border-width: 0;
+    */
   }
 
-  & .accordion-item {
-    border-right: 0;
-    border-left: 0;
-    @mixin border-radius 0;
+  summary::-webkit-details-marker {
+    display: none;
+  }
 
-    &:first-child {
-      border-top: 0;
-    }
-    &:last-child {
-      border-bottom: 0;
-    }
+  .accordion--body {
+    display: grid;
+    grid-template-rows: var(--a--ab-gtr, 0fr);
+    transition: grid-template-rows 0.5s;
+    border-bottom: var(--_a--bc) var(--_a--bw) var(--_a--bs);
 
-    .accordion-button {
-      &,
-      &.collapsed {
-        @mixin border-radius 0;
-      }
+    & > .field {
+      overflow: hidden;
+    }
+  }
+
+  & details[open] {
+    --a-icon-tr: -180deg;
+
+    & + .accordion--body {
+      --a--ab-gtr: 1fr;
+
+      padding-bottom: var(--a-body-pb, var(--_a-s));
     }
   }
 }

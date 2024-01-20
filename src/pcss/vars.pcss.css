@@ -1,6 +1,6 @@
 :root {
   /* Font */
-  --ff: "Raleway", sans-serif;
+  --ff: "GillSansNova", sans-serif;
   --ff-code: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --fs-root: 1rem;
@@ -24,8 +24,8 @@
   --transition-base: all var(--transition-time) ease-in-out;
 
   /* Body */
-  --body-c: var(--c-dark, #212529);
-  --body-bg: var(--c-white, #fff);
+  --body-c: var(--c-dark);
+  --body-bg: var(--c-white);
 
   /* Link */
   --link-c: var(--c-primary);
@@ -108,7 +108,7 @@
   --c-gray-600: #6c757d;
   --c-gray-700: #333;
   --c-gray-800: #151515;
-  --c-gray-900: #212529;
+  --c-gray-900: #0f1928;
   --c-primary: #4135a1;
   --c-secondary: #dee2e6;
   --c-success: #198754;
